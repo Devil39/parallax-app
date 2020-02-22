@@ -6,17 +6,22 @@ import 'package:http/http.dart' as http;
 
 import 'package:parallax/scoped_models/urls.dart';
 
-mixin CommunityModel on Model{
-  Future<dynamic> getAllPosts() async {
+mixin ChatModel on Model{
+  Future<dynamic> startChat(String uid, String friendUid) async {
    var statuscode;
    var message;
+   var body=json.encode({
+     "uid": uid,
+     "friendUid": friendUid
+   });
    try{
-      print("Sending Get all Messages Request!");
-      http.Response response=await http.get(
-          url_getAllPosts,
+      print("Sending start chatting Request!");
+      http.Response response=await http.post(
+          url_startChat,
           headers: {"Content-type": "application/json"},
+          body: body
         );
-      print("Response SignUp:");
+      print("Response Start Chatting:");
       print(response.statusCode);
       print(response.body);
       statuscode=response.statusCode;
@@ -36,10 +41,9 @@ mixin CommunityModel on Model{
           throw message;
         }
       }
-      
    }
   catch(err){
-    print("Error getting all messages!....$err");
+    print("Error starting chat!....$err");
     return {
       "code": statuscode,
       "message": err

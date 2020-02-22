@@ -1,17 +1,25 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:parallax/screens/chatScreen.dart';
+import 'package:parallax/scoped_models/mainModel.dart';
+import 'package:parallax/scoped_models/shared.dart';
+import 'package:parallax/models/user.dart';
 
 class MessageCard extends StatelessWidget {
 
   var message;
+  MainModel model;
 
-  MessageCard(this.message);
+  MessageCard({
+    this.message,
+    this.model
+  });
 
   @override
   Widget build(BuildContext context) {
-    return 
-          Card(
+    return Card(
         // color: Colors.black,
         elevation: 5,
         shape: RoundedRectangleBorder(
@@ -67,18 +75,36 @@ class MessageCard extends StatelessWidget {
                     ],
                   ),
                 ),
-               Container(
-                 margin: EdgeInsets.only(top: 10),
-                 padding: EdgeInsets.symmetric(vertical: 10),
-                 width: double.infinity,
-                child: Text(
-                  "Message Anonymous Ant",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white
+               GestureDetector(
+                 onTap: () async {
+                  //  print("Message UID:");
+                  //  print(message.uid);
+                   var a=Shared.getUserDetails();
+                  //  print(a);
+                  User user;
+                  await a.then((data){
+                     print(data);
+                     print(data.runtimeType);
+                     print(jsonDecode(data));
+                     user=data;
+                   });
+                   print(user);
+                   print(user.uid);
+                   model.startChat(user.uid, message.uid);
+                 },
+                child: Container(
+                   margin: EdgeInsets.only(top: 10),
+                   padding: EdgeInsets.symmetric(vertical: 10),
+                   width: double.infinity,
+                  child: Text(
+                    "Message Anonymous Ant",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
                   ),
-                ),
-                color: Colors.black,
+                  color: Colors.black,
+                 ),
                ),
               ],
             ),

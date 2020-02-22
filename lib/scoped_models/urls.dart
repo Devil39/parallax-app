@@ -1,5 +1,7 @@
-const baseUrl="http://172.17.231.153:8080";
+// const baseUrl="http://172.17.231.153:8080";
+const baseUrl="https://echo-gfas.herokuapp.com";
 
 const url_getAllPosts="$baseUrl/auth/allPosts";
 const url_uploadPost="$baseUrl/auth/uploadPost";
 const url_register="$baseUrl/register";
+const url_startChat="$baseUrl/auth/startchat";

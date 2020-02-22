@@ -4,10 +4,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:device_apps/device_apps.dart';
 // import 'package:http/http.dart' as http;
 import 'package:scoped_model/scoped_model.dart';
+import 'package:parallax/scoped_models/shared.dart';
 
-import 'package:parallax/screens/messageList.dart';
+import 'package:parallax/models/user.dart';
 import 'package:parallax/scoped_models/mainModel.dart';
 import 'package:parallax/screens/homePage.dart';
+import 'package:parallax/screens/dialogFlow.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,6 +17,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("Shared preferences initializing!");
+    Shared.initialize();
+  }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -42,7 +52,12 @@ class _LoginPageState extends State<LoginPage> {
     print(user.uid);
     if(user!=null && user.uid!=null)
      {
-       model.logIn(user.uid, "Someone2");
+       var user1=User.fromJson({
+         "uid": user.uid,
+         "name": user.displayName
+       });
+      //  model.logIn(user.uid, "Someone2");
+      model.logIn(user1);
      }
     List<Application> apps = await DeviceApps.getInstalledApplications();
     // print(apps);
@@ -101,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
             // return MyHomePage(title: "Something",);
             // return MessageList();
             return HomePage();
+            // return HomePageDialogflow();
           },
         ),
       );
@@ -115,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
+            // Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(

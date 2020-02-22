@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parallax/screens/dialogFlow.dart';
 
 import 'package:parallax/widgets/dateWidget.dart';
 import 'package:parallax/widgets/activityWidget.dart';
@@ -119,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MessageList(),
+                        builder: (context) => HomePageDialogflow(),
                       ),
                     );
                   },

@@ -4,16 +4,19 @@ import 'dart:convert';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:parallax/scoped_models/shared.dart';
+import 'package:parallax/models/user.dart';
 import 'package:parallax/scoped_models/urls.dart';
 
 mixin UserModel on Model{
-  Future<dynamic> logIn(String uid, String name) async {
+  // Future<dynamic> logIn(String uid, String name) async {
+  Future<dynamic> logIn(User user) async {
    var statuscode;
    var message;
   //  var body;
    var body=json.encode({
-      "uid": uid,
-      "name": name
+      "uid": user.uid,
+      "name": user.name
    });
   //  print("BOdy1");
   //  print(body);
@@ -31,6 +34,9 @@ mixin UserModel on Model{
       statuscode=response.statusCode;
       if(response.statusCode==200)
        {
+        //  print("User:");
+        //  print(user.uid);
+        Shared.setUserData(user);
         return jsonDecode(response.body);
       }
       else{
