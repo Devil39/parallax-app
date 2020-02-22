@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:parallax/widgets/chatCard.dart';
+
 class ChatList extends StatefulWidget {
   @override
   _ChatListState createState() => _ChatListState();
@@ -9,6 +11,7 @@ class _ChatListState extends State<ChatList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -30,11 +33,11 @@ class _ChatListState extends State<ChatList> {
         ),
       ),
     body: ListView.builder(
-      itemCount: 2,
+      itemCount: 1,
       itemBuilder: (BuildContext context, int index){
         return Container(
-          child: Text("2"),
-        );
+          child: ChatCard(),
+       );
       }
      ),
     );

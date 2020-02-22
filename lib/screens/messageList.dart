@@ -63,19 +63,30 @@ class _MessageListState extends State<MessageList> {
         backgroundColor: Colors.white,
         leading: Container(),
       ),
-      body: messages==null
+      body: 
+      messages==null
       ?Container(
         child: Center(
           child: CircularProgressIndicator(),
         ),
       )
-      :ListView.builder(
+      :
+      ListView.builder(
         itemCount: messages.length,
+        // itemCount: 1,
         padding: EdgeInsets.all(0),
         itemBuilder: (BuildContext context, int index){
           return Container(
             // child: Text("2"),
             child: MessageCard(messages[index]),
+            // child: MessageCard(MessageModel(
+            //   description: "Somenhting",
+            //   isAno: true,
+            //   messageId: "Somehitng",
+            //   timeStamp: "Somebgujrng",
+            //   title: "SOmelfn",
+            //   uid: "asdlandjk"
+            // )),
           );
         }
       ),
@@ -100,7 +111,7 @@ class _MessageListState extends State<MessageList> {
                 ),
               ),
               Container(
-                child: Icon(Icons.home),
+                child: Icon(Icons.people),
               ),
               Container(
                 child: Icon(Icons.message),

@@ -3,8 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:device_apps/device_apps.dart';
 // import 'package:http/http.dart' as http;
+import 'package:scoped_model/scoped_model.dart';
 
 import 'package:parallax/screens/messageList.dart';
+import 'package:parallax/scoped_models/mainModel.dart';
+import 'package:parallax/screens/homePage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
-  Future<String> signInWithGoogle() async {
+  Future<String> signInWithGoogle(MainModel model) async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
@@ -35,8 +38,12 @@ class _LoginPageState extends State<LoginPage> {
     final FirebaseUser currentUser = await _auth.currentUser();
     assert(user.uid == currentUser.uid);
     // print('Registered User: $user');
-    // print('UID:');
-    // print(user.uid);
+    print('UID:');
+    print(user.uid);
+    if(user!=null && user.uid!=null)
+     {
+       model.logIn(user.uid, "Someone2");
+     }
     List<Application> apps = await DeviceApps.getInstalledApplications();
     // print(apps);
     // //var resp=await 
@@ -59,35 +66,41 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FlutterLogo(size: 150),
-              SizedBox(height: 50),
-              _signInButton(),
-            ],
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model){
+        return Scaffold(
+        body: Container(
+          color: Colors.white,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FlutterLogo(size: 150),
+                  SizedBox(height: 50),
+                  _signInButton(model),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      }
+          // child: ,
     );
   }
 
-  Widget _signInButton() {
+  Widget _signInButton(MainModel model) {
     return OutlineButton(
       splashColor: Colors.grey,
       onPressed: () {
-      signInWithGoogle().whenComplete(() {
+      signInWithGoogle(model).whenComplete(() {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
             // return FirstScreen(name, email, uid);
             // return MyHomePage(title: "Something",);
-            return MessageList();
+            // return MessageList();
+            return HomePage();
           },
         ),
       );
