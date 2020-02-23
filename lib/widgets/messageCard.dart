@@ -44,10 +44,11 @@ class MessageCard extends StatelessWidget {
                         children: <Widget>[
                           Container(
                             margin: EdgeInsets.only(left: 10),
-                            child: Text(message.title),
+                            // child: Text(message.title),
+                            child: Text(message.name),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 35),
+                            margin: EdgeInsets.only(left: 25),
                             child: Text("10 hours ago"),
                           ),
                           // Text("10 hours ago"),
@@ -81,16 +82,28 @@ class MessageCard extends StatelessWidget {
                   //  print(message.uid);
                    var a=Shared.getUserDetails();
                   //  print(a);
-                  User user;
+                  dynamic user;
                   await a.then((data){
-                     print(data);
-                     print(data.runtimeType);
-                     print(jsonDecode(data));
-                     user=data;
+                    //  print(data);
+                    //  print(data.runtimeType);
+                    //  print(jsonDecode(data));
+                    print("Something!");
+                    print(data.runtimeType);
+                    user=data;
                    });
-                   print(user);
-                   print(user.uid);
-                   model.startChat(user.uid, message.uid);
+                  //  print(user);
+                  //  print(user);
+                   var c=await model.startChat(user["uid"], message.uid);
+                  //  print(c);
+                   if(c["status"]==200)
+                    {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatScreen(),
+                        ),
+                      );
+                    }
                  },
                 child: Container(
                    margin: EdgeInsets.only(top: 10),

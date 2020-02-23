@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:parallax/models/chatModel.dart';
+import 'package:parallax/scoped_models/mainModel.dart';
 class ChatScreen extends StatefulWidget {
+
+  ChatModel chat;
+
+  ChatScreen({
+    this.chat
+  });
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -8,6 +17,27 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
 
   TextEditingController _textController=TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final MainModel model=MainModel();
+    initializePage(model);
+  }
+
+  void initializePage(MainModel model) async {
+    // model.getAll
+    print(widget.chat.chatId);
+    var a=await model.getAllMessages(widget.chat.chatId);
+    print(a["payload"]["messages"]);
+    // var data1;
+    // await a.then((data){
+    //   data1=data;
+    // });
+    // print(data1);
+    // print(data1.toString());
+  }
 
   @override
   Widget build(BuildContext context) {

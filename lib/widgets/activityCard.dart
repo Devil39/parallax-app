@@ -29,12 +29,13 @@ class _ActivityCardState extends State<ActivityCard> {
                     mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  // Container(
+                  //   margin: EdgeInsets.all(5),
+                  //   child: Icon(Icons.assessment),
+                  // ),
                   Container(
-                    margin: EdgeInsets.all(5),
-                    child: Icon(Icons.assessment),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
+                    // padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
+                    padding: EdgeInsets.all(9),
                     child: Text(
                       widget.title,
                       style: TextStyle(

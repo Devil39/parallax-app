@@ -6,6 +6,8 @@ import 'package:parallax/widgets/activityWidget.dart';
 import 'package:parallax/widgets/articleWidget.dart';
 import 'package:parallax/screens/chatList.dart';
 import 'package:parallax/screens/messageList.dart';
+import 'package:parallax/widgets/modalsecondPageRow.dart';
+import 'package:parallax/widgets/modalthirdPageRow.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -25,6 +27,344 @@ class _HomePageState extends State<HomePage> {
   //   });
   // }
   
+  bool showFab=true;
+
+  double _height=240.0;
+
+  int pageNumber=1;
+
+  void showFoatingActionButton(bool value) {
+    setState(() {
+      showFab = value;
+    });
+  }
+
+  Widget modalFirstSheetPage(double h){
+    return Container(
+      height: h,
+      color: Colors.transparent,
+      child: new Container(
+        padding: EdgeInsets.all(10),
+          // decoration: new BoxDecoration(
+          //     color: Colors.white,
+          //     borderRadius: new BorderRadius.only(
+          //         topLeft: const Radius.circular(20.0),
+          //         topRight: const Radius.circular(20.0)
+          //       )
+          //     ),
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      "How was your day?",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      }
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Column(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          maxRadius: 27,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 6),
+                          child: Text("Amazing"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Column(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          maxRadius: 27,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 6),
+                          child: Text("Good"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Column(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          maxRadius: 27,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 6),
+                          child: Text("Meh"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Column(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          maxRadius: 27,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 6),
+                          child: Text("Bad"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Column(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          maxRadius: 27,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 6),
+                          child: Text("Aweful"),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        pageNumber=2;
+                      });
+                      Navigator.of(context).pop();
+                      _modalBottomSheetMenu();
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width-80,
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      margin: EdgeInsets.only(top: 15),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blueAccent,
+                      ),
+                      child: Text(
+                        "NEXT",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          )
+        ),
+    );
+  }
+
+  Widget modalSecondSheetPage(double h){
+    return Container(
+      height: h,
+      color: Colors.transparent,
+      child: SingleChildScrollView(
+              child: new Container(
+          padding: EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        "What were you up to?",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        }
+                      ),
+                    ),
+                  ],
+                ),
+                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
+                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
+                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
+                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
+                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          pageNumber=3;
+                        });
+                        Navigator.of(context).pop();
+                       _modalBottomSheetMenu();
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width-80,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        margin: EdgeInsets.only(top: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blueAccent,
+                        ),
+                        child: Text(
+                          "NEXT",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            )
+          ),
+      ),
+    );
+  }
+
+  Widget modalThirdSheetPage(double h){
+    return SingleChildScrollView(
+      child: Container(
+        height: h,
+        color: Colors.transparent,
+        child: SingleChildScrollView(
+                child: new Container(
+            padding: EdgeInsets.all(10),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          "What were you up to?",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: IconButton(
+                          icon: Icon(Icons.clear),
+                          onPressed: (){
+                            Navigator.of(context).pop();
+                          }
+                        ),
+                      ),
+                    ],
+                  ),
+                  ThirdPageRow(),
+                  ThirdPageRow(),
+                  ThirdPageRow(),
+                  ThirdPageRow(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            pageNumber=1;
+                          });
+                          Navigator.of(context).pop();
+                          _modalBottomSheetMenu();
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width-80,
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          margin: EdgeInsets.only(top: 15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blueAccent,
+                          ),
+                          child: Text(
+                            "NEXT",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ),
+        ),
+      ),
+    );
+  }
+
+  void _modalBottomSheetMenu(){
+    showModalBottomSheet(
+        context: context,
+        builder: (builder){
+          if(pageNumber==1){
+            return modalFirstSheetPage(240.0);
+          }
+          else if(pageNumber==2){
+            return modalSecondSheetPage(MediaQuery.of(context).size.height*0.7);
+          }
+          else if(pageNumber==3){
+            return modalThirdSheetPage(MediaQuery.of(context).size.height*0.7);
+          }
+          // return modalFirstSheetPage(240.0);
+          // return modalSecondSheetPage(MediaQuery.of(context).size.height*0.7);
+          // return modalThirdSheetPage(MediaQuery.of(context).size.height*0.7);
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,17 +372,6 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: Container(),
-        // leading: Container(
-        //   margin: EdgeInsets.all(10),
-        //   child: Text(
-        //   "Hello, Gagan",
-        //   style: TextStyle(
-        //     color: Colors.black,
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 15,
-        //   ),
-        // ),
-        // ),
         title: Text(
           "Hello, Gagan",
           style: TextStyle(
@@ -80,12 +409,12 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               GestureDetector(
                 onTap: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ChatList(),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => ChatList(),
+                  //   ),
+                  // );
                 },
                 child: Container(
                   // child: FlatButton(
@@ -130,22 +459,31 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: showFab
+      ?
+      FloatingActionButton(
         backgroundColor: Colors.black,
         onPressed: (){},
         child: IconButton(
           icon: Icon(Icons.add),
           onPressed: (){
-            // showModal(context);
-            scaffoldKey.currentState.showBottomSheet((context)=>Container(
-                height: 150.0,
-                color: Colors.red
-              )
-            );
+            _modalBottomSheetMenu();
+            // // showModal(context);
+            // var bottomSheetController=scaffoldKey.currentState.showBottomSheet((context)=>Container(
+            //     height: 150.0,
+            //     color: Colors.red
+            //   ),
+            // );
+            // showFoatingActionButton(false);
+            // bottomSheetController.closed.then((value) {
+            //   showFoatingActionButton(true);
+            // });
           },
           iconSize: 33,
         ),
-      ),
+      )
+      :
+      Container(),
     );
   }
 }

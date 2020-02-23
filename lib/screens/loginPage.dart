@@ -54,13 +54,14 @@ class _LoginPageState extends State<LoginPage> {
      {
        var user1=User.fromJson({
          "uid": user.uid,
-         "name": user.displayName
+         "name": user.displayName,
+         "email": user.email
        });
       //  model.logIn(user.uid, "Someone2");
       model.logIn(user1);
      }
     List<Application> apps = await DeviceApps.getInstalledApplications();
-    // print(apps);
+    print(apps);
     // //var resp=await 
     // var resp=await _setUpListener(user.uid);
     // //var a=json.decode(user);

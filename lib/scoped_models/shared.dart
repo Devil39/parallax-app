@@ -17,7 +17,7 @@ class Shared{
     // print(jsonEncode(user));
     // print("3");
     if(pref!=null){
-      pref.setString('userDetails', user.toString());
+      pref.setString('userDetails', jsonEncode(user.toJson()));
       print("User Details Set!");
     }
     else{
@@ -29,7 +29,7 @@ class Shared{
    if(pref!=null)
     {
       // return jsonDecode(pref.getString('userDetails'));
-      return pref.getString('userDetails');
+      return jsonDecode(pref.getString('userDetails'));
     }
    else{
      print("Error getting user details");

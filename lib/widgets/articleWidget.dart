@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ArticleWidget extends StatelessWidget {
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Container(

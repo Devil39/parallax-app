@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 
 import 'package:parallax/screens/chatScreen.dart';
+import 'package:parallax/models/chatModel.dart';
 
 class ChatCard extends StatelessWidget {
+
+  ChatModel chat;
+
+  ChatCard({
+    this.chat
+  });
+
   @override
   Widget build(BuildContext context) {
+    // print("chatCard.dart");
+    // print(chat);
     return GestureDetector(
         onTap: (){
-          print("Pushing!");
+          // print("Pushing!");
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ChatScreen(),
+              builder: (context) => ChatScreen(chat: chat),
             ),
           );
         },
@@ -30,23 +40,28 @@ class ChatCard extends StatelessWidget {
                 Expanded(
                   // margin: EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Somehting",
+                        chat.name,
                         textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700
+                        ),
                       ),
-                      Text(
-                        "Somebuinf",
-                        textAlign: TextAlign.start,
-                      ),
+                      // Text(
+                      //   "Somethign Something",
+                      //   textAlign: TextAlign.start,
+                      // ),
                     ],
                   ),
                 ),
-                CircleAvatar(
-                  backgroundColor: Colors.black87,
-                  child: Text("2"),
-                  maxRadius: 12
-                ),
+                // CircleAvatar(
+                //   backgroundColor: Colors.black87,
+                //   child: Text("2"),
+                //   maxRadius: 12
+                // ),
               ],
             ),
           ),
