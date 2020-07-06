@@ -57,6 +57,11 @@ flutter:
    - images/Ink.png
    - images/clumsy.png
    - images/home.png
+   - images/awesome_icon.png
+   - images/good_icon.png
+   - images/bad_icon.png
+   - images/meh_icon.png
+   - images/awful_icon.png
    - assets/credentials.json
   #  - images/a_dot_ham.jpeg
 

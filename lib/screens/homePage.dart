@@ -4,7 +4,7 @@ import 'package:parallax/screens/dialogFlow.dart';
 import 'package:parallax/widgets/dateWidget.dart';
 import 'package:parallax/widgets/activityWidget.dart';
 import 'package:parallax/widgets/articleWidget.dart';
-import 'package:parallax/screens/chatList.dart';
+import 'profilePage.dart';
 import 'package:parallax/screens/messageList.dart';
 import 'package:parallax/widgets/modalsecondPageRow.dart';
 import 'package:parallax/widgets/modalthirdPageRow.dart';
@@ -84,7 +84,8 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: <Widget>[
                         CircleAvatar(
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.white,
+                          backgroundImage: AssetImage('images/awesome_icon.png'),
                           maxRadius: 27,
                         ),
                         Container(
@@ -99,7 +100,8 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: <Widget>[
                         CircleAvatar(
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.white,
+                          backgroundImage: AssetImage('images/good_icon.png'),
                           maxRadius: 27,
                         ),
                         Container(
@@ -114,7 +116,9 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: <Widget>[
                         CircleAvatar(
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.green,
+                          backgroundImage: AssetImage('images/meh_icon.png'),
                           maxRadius: 27,
                         ),
                         Container(
@@ -129,7 +133,8 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: <Widget>[
                         CircleAvatar(
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.white,
+                          backgroundImage: AssetImage('images/bad_icon.png'),
                           maxRadius: 27,
                         ),
                         Container(
@@ -144,7 +149,8 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: <Widget>[
                         CircleAvatar(
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.white,
+                          backgroundImage: AssetImage('images/awful_icon.png'),
                           maxRadius: 27,
                         ),
                         Container(
@@ -383,7 +389,14 @@ class _HomePageState extends State<HomePage> {
           Container(
             margin: EdgeInsets.all(10),
             child: GestureDetector(
-            onTap: (){},
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ),
+              );
+            },
             child: CircleAvatar(
               backgroundColor: Colors.grey,
             ),
@@ -409,20 +422,8 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               GestureDetector(
                 onTap: (){
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => ChatList(),
-                  //   ),
-                  // );
                 },
                 child: Container(
-                  // child: FlatButton(
-                  //   child: Container(
-                  //     child: Image.asset('images/home.png'),
-                  //   ),
-                  //   onPressed: (){},
-                  // ),
                   child: IconButton(
                     icon: Icon(Icons.home),
                     onPressed: (){}
@@ -468,16 +469,6 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.add),
           onPressed: (){
             _modalBottomSheetMenu();
-            // // showModal(context);
-            // var bottomSheetController=scaffoldKey.currentState.showBottomSheet((context)=>Container(
-            //     height: 150.0,
-            //     color: Colors.red
-            //   ),
-            // );
-            // showFoatingActionButton(false);
-            // bottomSheetController.closed.then((value) {
-            //   showFoatingActionButton(true);
-            // });
           },
           iconSize: 33,
         ),
