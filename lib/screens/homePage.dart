@@ -52,143 +52,150 @@ class _HomePageState extends State<HomePage> {
           //         topRight: const Radius.circular(20.0)
           //       )
           //     ),
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      "How was your day?",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: Icon(Icons.clear),
-                      onPressed: (){
-                        Navigator.of(context).pop();
-                      }
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Column(
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          maxRadius: 27,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 6),
-                          child: Text("Amazing"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Column(
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          maxRadius: 27,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 6),
-                          child: Text("Good"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Column(
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          maxRadius: 27,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 6),
-                          child: Text("Meh"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Column(
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          maxRadius: 27,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 6),
-                          child: Text("Bad"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Column(
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          maxRadius: 27,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 6),
-                          child: Text("Aweful"),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        pageNumber=2;
-                      });
-                      Navigator.of(context).pop();
-                      _modalBottomSheetMenu();
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width-80,
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      margin: EdgeInsets.only(top: 15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blueAccent,
-                      ),
+          child: SingleChildScrollView(
+                      child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
                       child: Text(
-                        "NEXT",
-                        textAlign: TextAlign.center,
+                        "How was your day?",
                         style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700
                         ),
                       ),
                     ),
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        }
+                      ),
+                    ),
+                  ],
+                ),
+                // Wrap(
+                //                 children: [
+                                  // Row(
+                                    Wrap(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              maxRadius: 27,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 6),
+                              child: Text("Amazing"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              maxRadius: 27,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 6),
+                              child: Text("Good"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              maxRadius: 27,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 6),
+                              child: Text("Meh"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              maxRadius: 27,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 6),
+                              child: Text("Bad"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              maxRadius: 27,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 6),
+                              child: Text("Aweful"),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                //                 ]
+                // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          pageNumber=2;
+                        });
+                        Navigator.of(context).pop();
+                        _modalBottomSheetMenu();
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width-80,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        margin: EdgeInsets.only(top: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blueAccent,
+                        ),
+                        child: Text(
+                          "NEXT",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )
         ),
     );
@@ -225,11 +232,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
-                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
-                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
-                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
-                SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
+                SecondPageRow(title: "Self-care", chipTitles: ["Jogging", "Exercise", "Meditate"]),
+                SecondPageRow(title: "Hobby", chipTitles: ["Paint", "Read", "Code", "Video Games"]),
+                SecondPageRow(title: "Interaction", chipTitles: ["Socialise", "Social Media"]),
+                // SecondPageRow(title: "Something", chipTitles: ["Jogging", ""]),
+                // SecondPageRow(title: "Something", chipTitles: ["Jogging", "Netflix"]),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -301,10 +308,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  ThirdPageRow(),
-                  ThirdPageRow(),
-                  ThirdPageRow(),
-                  ThirdPageRow(),
+                  ThirdPageRow(title: "Meditate"),
+                  ThirdPageRow(title: "Read"),
+                  // ThirdPageRow(),
+                  // ThirdPageRow(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -350,7 +357,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (builder){
           if(pageNumber==1){
-            return modalFirstSheetPage(240.0);
+            return modalFirstSheetPage(330.0);
           }
           else if(pageNumber==2){
             return modalSecondSheetPage(MediaQuery.of(context).size.height*0.7);
@@ -364,6 +371,16 @@ class _HomePageState extends State<HomePage> {
         }
     );
   }
+
+  List<Widget> constructColumn(){
+    var arr=<Widget>[
+      DateWidget(),
+      ActivityWidget(),
+    ];
+    arr.add(ArticleWidget());
+    return arr;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -393,13 +410,17 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         backgroundColor: Colors.white,
       ),
-      body: ListView(
+      // body: ListView(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(21),
-        children: <Widget>[
-          DateWidget(),
-          ActivityWidget(),
-          ArticleWidget(),
-        ],
+        // children: <Widget>[
+        child:Column(
+          children: constructColumn()
+          // <Widget>[
+          //   DateWidget(),
+          //   ActivityWidget(),
+          // ].add(ArticleWidget()),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Container(

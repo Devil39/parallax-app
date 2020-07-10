@@ -39,8 +39,10 @@ class SecondPageRow extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          // Row(
+          Wrap(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            alignment: WrapAlignment.center,
             children: something()
           //     <Widget>[
           //     // ActivityCard(title: "Jogging"),

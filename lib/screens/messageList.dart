@@ -68,7 +68,7 @@ class _MessageListState extends State<MessageList> {
           appBar: AppBar(
             elevation: 0,
             title: Text(
-              "Lorem Ipsum",
+              "Posts",
               style: TextStyle(
                 color: Colors.black,
               ),

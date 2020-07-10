@@ -10,3 +10,5 @@ const url_startChat="$baseUrl/auth/startchat";
 const url_getAllChats="$baseUrl/auth/getChats";
 const url_getAllMessages="$baseUrl/auth/getAllMessages";
 const url_getAllActivities="$baseUrl1/getSuggestions";
+const url_getArticles="$baseUrl1/getArticles";
+const url_getBaseArticles="$baseUrl/getArticles";
