@@ -17,6 +17,7 @@ class _ProfilePageState extends State<ProfilePage>
     _tabController = TabController(length: 2, vsync: this);
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,73 +64,163 @@ class _ProfilePageState extends State<ProfilePage>
         ],
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 50),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.grey,
-                    radius: 60.0,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 50),
+                child: CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  radius: 60.0,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Text(
-                    'Gagan Verma',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Text(
+                  'Gagan Verma',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: Text(
-                    'gagan.v@gmail.com',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400),
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Text(
+                  'gagan.v@gmail.com',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Container(
             height: 80.0,
             child: TabBar(
               controller: _tabController,
               tabs: [
-                Tab(icon: Icon(Icons.directions_bus, color: Colors.black)),
-                Tab(icon: Icon(Icons.directions_bus, color: Colors.black)),
+                Tab(
+                    child:Text(
+                        'Stories',
+                style:
+                TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                    )
+                ),
+                Tab(
+                    child:Text(
+                      'Stats',
+                      style:
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                    )
+                ),
               ],
             ),
           ),
-          Container(
-            height: 80.0,
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                Text("First"),
-                Text("Second"),
-              ],
+          Expanded(
+            child: Container(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  ListView(
+                    padding: const EdgeInsets.all(8),
+                    children: <Widget>[
+                      Card(
+                        elevation: 8.0,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              leading: CircleAvatar(radius: 16,),
+                              title: Text('Posted Anonymously'),
+                              subtitle: Text('A month ago.'),
+                              trailing: Icon(Icons.more_vert),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non enim nulla turpis id. Id sed tellus, velit laoreet amet ipsum netus. Sed proin duis et leo, nam vitae porta. Enim, lorem curabitur id facilisis nisi, pulvinar magnis cursus neque. Ut ipsum et, felis nam euismod. ',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Card(
+                        elevation: 8.0,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              leading: CircleAvatar(radius: 16,),
+                              title: Text('Posted Anonymously'),
+                              subtitle: Text('A month ago.'),
+                              trailing: Icon(Icons.more_vert),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non enim nulla turpis id. Id sed tellus, velit laoreet amet ipsum netus. Sed proin duis et leo, nam vitae porta. Enim, lorem curabitur id facilisis nisi, pulvinar magnis cursus neque. Ut ipsum et, felis nam euismod. ',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Card(
+                        elevation: 8.0,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              leading: CircleAvatar(radius: 16,),
+                              title: Text('Posted Anonymously'),
+                              subtitle: Text('A month ago.'),
+                              trailing: Icon(Icons.more_vert),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non enim nulla turpis id. Id sed tellus, velit laoreet amet ipsum netus. Sed proin duis et leo, nam vitae porta. Enim, lorem curabitur id facilisis nisi, pulvinar magnis cursus neque. Ut ipsum et, felis nam euismod. ',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  ListView(
+                    padding: const EdgeInsets.all(8),
+                    children: <Widget>[
+                      Card(
+                        elevation: 8.0,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Text('Steak 16'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           )
         ],
